@@ -69,6 +69,27 @@ na mesa e é lançado junto com os outros.
   ficam apagados na mesa. Crítico (01) e desastre (100) olham o resultado final.
 - Depois de cada lançamento, a escolha volta sozinha para **Normal**.
 
+## Mesa compartilhada (em teste)
+
+Para o Guardião e até 6 jogadores rolarem juntos, cada um no seu aparelho (por enquanto só no
+endereço de teste; o plano completo está em `docs/plano-mesa-compartilhada.md`).
+
+- **O Guardião** toca em **Mesa** → **Criar uma mesa nova**. Aparece o código da mesa (6 letras e
+  números, como **K7Q X3M**) e o botão para convidar: no computador ele copia um texto com o link,
+  para colar no Discord; no celular, abre o compartilhar.
+- **Os jogadores** tocam em **Mesa**, escrevem o nome do investigador e o código e tocam em
+  **Entrar na mesa**. Quem toca no link do convite já encontra o código preenchido.
+- Ninguém faz cadastro: na mesa vai só o nome do investigador, que fica guardado no aparelho.
+- O painel da mesa mostra quem está nela, na ordem de entrada (o ponto aceso é quem está
+  conectado). Com a mesa ligada, o botão mostra quantos estão conectados (**Mesa · 3**).
+- Se a conexão cair, ou se o app for fechado e aberto de novo, ele volta sozinho para o mesmo lugar.
+- **Sair da mesa** guarda o lugar: entrando de novo com o código, o jogador volta para ele. O
+  Guardião tem **Encerrar a mesa**, que tira todos e apaga a mesa. Uma mesa sem uso se apaga
+  sozinha 6 horas depois.
+- Para testar vários jogadores num computador só: no endereço de teste, acrescente `?aba` ao
+  endereço (por exemplo `https://webersoncosta.github.io/Dados-de-Arkham-teste/?aba`). Cada aba
+  aberta assim conta como um aparelho diferente.
+
 ## Instalar na tela inicial
 
 **Android (Chrome)**
@@ -166,10 +187,18 @@ mexer no app oficial que os amigos têm na tela inicial.
   git push origin main
   git switch desenvolvimento
   ```
+- **Servidor da mesa compartilhada** (pasta `server/`, no Cloudflare; precisa do Node.js e do
+  login feito uma vez com `npx wrangler@4.151.3 login`). Os comandos rodam dentro de `server/`:
+  ```sh
+  npm test                     # as regras da sala, sem servidor
+  npm run deploy:teste         # envia a mesa de teste (roda os testes antes)
+  MESA_URL=https://mesa-arkham-teste.mesa-arkham.workers.dev npm run test:mesa   # o teste dos três aparelhos
+  npm run deploy:oficial       # a mesa oficial: só junto com o "pode publicar"
+  ```
 
 ## Como o projeto está organizado
 
-O projeto tem duas metades que não se misturam:
+O app tem duas metades que não se misturam:
 
 **A mecânica** (`src/core/`) é igual para qualquer tema:
 
@@ -180,6 +209,7 @@ O projeto tem duas metades que não se misturam:
 | `formula.js` | As fórmulas de vários dados: montar, escrever ("2d6 + 6"), ler e somar; o limite de 8 dados |
 | `physics.js` | Gravidade, quiques, paredes, os dados tortos que rolam de novo e a leitura da face que ficou para cima |
 | `stage.js` | Câmera e área da mesa, ajustadas ao tamanho da tela |
+| `room-link.js` | A ligação com a mesa compartilhada: criar a mesa, entrar, manter a conexão viva e voltar sozinho quando ela cai |
 
 **O tema** (`src/themes/arkham/`) é tudo o que se vê e se ouve, e as regras do jogo:
 
@@ -192,6 +222,18 @@ O projeto tem duas metades que não se misturam:
 | `dice-look.js` | Material e pintura dos dados (pedra, osso, números) e o dado descartado apagado |
 | `audio.js` | Som dos dados, vento, sussurros e presságios |
 
+**O servidor da mesa compartilhada** (`server/`) roda no Cloudflare e não faz parte do app que vai
+para o celular. Cada sala é um pequeno programa com memória própria, que entrega a cada pessoa só
+o que ela pode ver e se apaga sozinho:
+
+| Arquivo | O que faz |
+| --- | --- |
+| `room.js` | As regras da sala: o código, os lugares (Guardião e até 6 jogadores), a conferência de cada rolagem e quem vê o quê |
+| `worker.js` | A parte do Cloudflare: criar a sala, as conexões ao vivo, guardar, entregar e apagar |
+| `wrangler.toml` | Os dois servidores: a mesa oficial e a mesa de teste |
+| `test/room.test.js` | Testes das regras, sem servidor |
+| `test/three-devices.test.js` | O Guardião e os jogadores simulados, conferindo que ninguém recebe o que não pode ver |
+
 O restante:
 
 - `index.html`: a página.
@@ -202,8 +244,11 @@ O restante:
   nunca misturar arquivos de versões diferentes.
 - `CLAUDE.md`: notas do projeto (estado atual, decisões, fluxo de trabalho e ideias para o
   futuro), para continuar o trabalho numa conversa nova sem perder nada.
+- `docs/plano-mesa-compartilhada.md`: o plano da mesa compartilhada, com as decisões e as fases.
 - `icons/`: os ícones do app (gerados por `tools/icone.html`).
 - `src/main.js`: liga as peças (toque, escolha dos dados, fórmula, atalhos, resultado).
+- `src/room-panel.js`: o botão "Mesa" e o painel da mesa compartilhada (criar, entrar, quem está
+  na mesa, convite, sair).
 - `src/app.css`: posição dos elementos na tela.
 - `src/themes/index.js`: a lista de temas (hoje só "arkham").
 - `src/lib/`: ferramentas pequenas usadas em todo o app.
