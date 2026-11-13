@@ -71,10 +71,10 @@ na mesa e é lançado junto com os outros.
   ficam apagados na mesa. Crítico (01) e desastre (100) olham o resultado final.
 - Depois de cada lançamento, a escolha volta sozinha para **Normal**.
 
-## Mesa compartilhada (em teste)
+## Mesa compartilhada
 
-Para o Guardião e até 6 jogadores rolarem juntos, cada um no seu aparelho (por enquanto só no
-endereço de teste; o plano completo está em `docs/plano-mesa-compartilhada.md`).
+Para o Guardião e até 6 jogadores rolarem juntos, cada um no seu aparelho (desde a versão 1.2; o
+plano completo está em `docs/plano-mesa-compartilhada.md`).
 
 - **O Guardião** toca em **Mesa** → **Criar uma mesa nova** e responde se os jogadores veem os
   valores uns dos outros (veja "Valores do investigador", abaixo). Aparece o código da mesa (6 letras
@@ -236,6 +236,7 @@ mexer no app oficial que os amigos têm na tela inicial.
   npm run deploy:teste         # envia a mesa de teste (roda os testes antes)
   MESA_URL=https://mesa-arkham-teste.mesa-arkham.workers.dev npm run test:mesa   # o teste dos três aparelhos
   npm run deploy:oficial       # a mesa oficial: só junto com o "pode publicar"
+  MESA_URL=https://mesa-arkham.mesa-arkham.workers.dev MESA_ORIGEM=https://webersoncosta.github.io npm run test:mesa   # o mesmo teste, contra a mesa oficial
   ```
 
 ## Como o projeto está organizado
@@ -249,7 +250,7 @@ O app tem duas metades que não se misturam:
 | `polyhedra.js` | A forma de cada dado e em que face fica cada número |
 | `dice-sets.js` | Os tipos de dado (d4 a d20) e o d100 (dois d10: dezenas + unidades) |
 | `formula.js` | As fórmulas de vários dados: montar, escrever ("2d6 + 6"), ler e somar; o limite de 8 dados |
-| `physics.js` | Gravidade, quiques, paredes, os dados tortos que rolam de novo e a leitura da face que ficou para cima |
+| `physics.js` | Gravidade, quiques, paredes, o tamanho e o peso dos dados, os dados tortos que rolam de novo e a leitura da face que ficou para cima |
 | `stage.js` | Câmera e área da mesa, ajustadas ao tamanho da tela (no PC, o painel da mesa compartilhada fica ao lado) |
 | `room-link.js` | A ligação com a mesa compartilhada: criar a mesa, entrar, manter a conexão viva e voltar sozinho quando ela cai |
 | `counters.js` | Os contadores de um personagem (máximo e valor atual): as contas, sem tela e sem tema |
@@ -302,6 +303,10 @@ O restante:
 - `src/themes/index.js`: a lista de temas (hoje só "arkham").
 - `src/lib/`: ferramentas pequenas usadas em todo o app.
 - `tools/servidor-local.py` e `tools/servidor-caminhos.py`: só para testar no computador.
+- `tools/medir-dados.js`: mede a física no computador (tempo até o resultado, empurrões, tremor e
+  se as faces saem por igual), com centenas de lances de uma vez.
+- `src/tune-panel.js`: TEMPORÁRIO, o painel de ajuste do tamanho e do peso dos dados, só no
+  endereço de teste, com `?ajuste` no fim do endereço. Sai antes de publicar.
 - `.nojekyll`: avisa o GitHub Pages para publicar os arquivos como estão.
 
 ## Para criar um tema no futuro
