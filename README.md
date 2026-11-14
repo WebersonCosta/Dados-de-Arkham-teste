@@ -115,7 +115,7 @@ plano completo está em `docs/plano-mesa-compartilhada.md`).
   - Ao criar a mesa, o Guardião escolhe se os outros jogadores também veem. Se escolher que não, a
     proteção é feita na própria mesa, no servidor: os números dos outros nunca chegam ao aparelho de
     um jogador.
-- **Alertas para o Guardião** (em teste, na versão 1.4): quando um jogador ajusta os valores, o app
+- **Alertas para o Guardião** (desde a versão 1.4): quando um jogador ajusta os valores, o app
   do Guardião lembra a regra da 7ª edição nos casos que pedem atenção:
   - perda de 5 ou mais de SAN de uma vez (teste de INT para insanidade temporária);
   - perda de um quinto ou mais da SAN na sessão (possível insanidade indefinida);
@@ -123,12 +123,13 @@ plano completo está em `docs/plano-mesa-compartilhada.md`).
   - perda de metade do PV máximo ou mais de uma vez (ferimento grave);
   - PV chegando a zero (inconsciente, ou morrendo com um ferimento grave).
 
-  O aviso aparece no alto da tela e fica até o Guardião tocar em **Entendi**. Enquanto isso, o
-  jogador fica destacado na lista, e o alerta fica no histórico, marcado "só você vê". Os toques
+  O aviso aparece no alto da tela e some sozinho depois de uns 10 segundos (ou com **Entendi**). No
+  histórico, o alerta fica marcado "só você vê" até o Guardião tocar em **Apagar**; enquanto isso, o
+  jogador fica destacado na lista. Os toques
   seguidos no − contam como uma perda só: o app espera o jogador ficar 4 segundos sem mexer naquele
   valor. Os alertas são calculados no aparelho do Guardião: a mesa não sabe deles, e os jogadores
   não recebem nada. São lembretes; quem decide é o Guardião.
-- **Tirar alguém da mesa** (em teste, na versão 1.4): o Guardião toca em **Tirar alguém**, ao lado
+- **Tirar alguém da mesa** (desde a versão 1.4): o Guardião toca em **Tirar alguém**, ao lado
   de "Na mesa", e no × do jogador, e confirma. É para um lugar ocupado por engano ou por quem trocou
   de aparelho. A pessoa sai na hora (ou, se estava fora, ao voltar) e só volta entrando de novo com
   o código, num lugar novo, se houver vaga. A proteção é feita na própria mesa, no servidor: só o
