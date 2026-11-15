@@ -23,23 +23,31 @@ para depois. Mantenha este arquivo em dia a cada etapa.
 - Quando Weberson pedir para avisar de problemas antes de implementar, explicar o problema e
   perguntar antes de mexer.
 
-## Estado atual (14/11/2026)
+## Estado atual (15/11/2026)
 
 | | Versão | Onde |
 | --- | --- | --- |
-| Oficial | **1.4**, publicada em 14/11/2026 | `main` = tag `v1.4` (caf3124), https://webersoncosta.github.io/Dados-de-Arkham/; mesa oficial em https://mesa-arkham.mesa-arkham.workers.dev (atualizada junto, com o tirar um lugar) |
-| Desenvolvimento | **1.5**: ajustes pedidos por Weberson depois de testar a 1.4 (os avisos dos alertas somem sozinhos, o histórico só apaga no "Apagar", e a folha dos valores que fechava ao clicar num campo, no PC), em teste | `desenvolvimento`; endereço de teste com o envio `teste 16` |
+| Oficial | **1.5**, publicada em 14/11/2026 | `main` = tag `v1.5` (225698b), https://webersoncosta.github.io/Dados-de-Arkham/; mesa oficial em https://mesa-arkham.mesa-arkham.workers.dev (a mesma da 1.4: o servidor não mudou) |
+| Desenvolvimento | **1.6**: a logo nova em 3D nos ícones do app, em teste com Weberson | `desenvolvimento`; endereço de teste com o envio `teste 17` |
 
-Versões publicadas (tags): `v1.0` (3ac132c), `v1.1` (94cafb6), `v1.2` (d41a027), `v1.3` (fb4481a) e `v1.4` (caf3124). A 1.1
+Versões publicadas (tags): `v1.0` (3ac132c), `v1.1` (94cafb6), `v1.2` (d41a027), `v1.3` (fb4481a), `v1.4` (caf3124) e `v1.5` (225698b). A 1.1
 trouxe: vários dados juntos (fórmulas como 2d6 + 6), o 1d3, atalhos e fórmulas favoritas, os modos
 dado único e montagem, as atualizações sem mistura de versões e o número da versão no canto. A 1.2
 trouxe a mesa compartilhada (fase 2), com os valores do investigador. A 1.3 trouxe a física nova dos
 dados: menores (82%), sem tremor, empurrões mais raros e mais discretos, e a mesma física em
 qualquer aparelho. A 1.4 trouxe a fase 3 da mesa compartilhada, versão enxuta: os alertas do
-Guardião (SAN e PV) e tirar um lugar da mesa.
+Guardião (SAN e PV) e tirar um lugar da mesa. A 1.5 ajustou os alertas (o aviso some sozinho; o
+histórico só apaga no "Apagar") e consertou a folha dos valores que fechava ao clicar num campo, no
+PC.
 
-- Próximo envio para o teste: subir o `RELEASE` do `sw.js` para 17.
-- **Trabalho atual (14/11/2026): ajustes depois da 1.4** (envio `teste 16`, sem publicar). Weberson
+- Próximo envio para o teste: subir o `RELEASE` do `sw.js` para 18.
+- **Trabalho atual (15/11/2026): a logo nova.** Weberson pediu para trocar a logo desenhada (o d20
+  de osso com o olho, os tentáculos e o círculo de sigilos, feita por `tools/icone.html`) por uma
+  logo 3D do mesmo tema, que ele pôs em `icons/logo3D.jpg` (1024 × 1024). Os ícones agora saem dela
+  por `tools/icones.ps1` (veja "Ícones"); o `tools/icone.html` saiu (o desenho antigo está no
+  histórico, na tag `v1.5`). No envio `teste 17`. Falta Weberson conferir e dar o "pode publicar"
+  (o servidor não mudou).
+- **Ajustes depois da 1.4 (versão 1.5, publicada em 14/11/2026; envio `teste 16`).** Weberson
   pediu: os alertas não precisam ficar para sempre; o aviso no alto some sozinho depois de alguns
   segundos se ninguém tocar em "Entendi"; no histórico, o alerta só sai por uma ação de propósito do
   Guardião. E relatou um erro no PC: na folha dos valores, depois de criados, clicar num campo de
@@ -47,8 +55,10 @@ Guardião (SAN e PV) e tirar um lugar da mesa.
   (`at-top`, feito para o teclado do celular); o botão do mouse era solto já sobre o fundo escuro, e
   o Chrome manda o clique para o elemento que contém os dois pontos (o fundo), que fechava a folha.
   No celular o toque é conferido num ponto só, por isso funcionava. Feito: veja "Folhas" e "Mesa
-  compartilhada: alertas e tirar um lugar". Falta Weberson testar e dar o "pode publicar" (o
-  servidor não mudou: a mesa oficial fica como está).
+  compartilhada: alertas e tirar um lugar". Publicado com o "pode publicar" dele; o servidor não
+  mudou, e a mesa oficial ficou como estava. Conferido no endereço oficial: v1.5, sem erros, e a mesa
+  oficial respondendo. Próxima fase da nova ordem: a 4 (a ficha, primeiro degrau), quando Weberson
+  pedir.
 - **Fase 3 da mesa compartilhada, versão enxuta (versão 1.4, publicada em 14/11/2026).** Depois da
   primeira sessão com o grupo, Weberson reviu as prioridades (o critério e a nova ordem estão em
   "Etapa atual", abaixo, e no plano) e pediu a fase 3 enxuta: alertas para o Guardião (SAN e PV, com
@@ -275,6 +285,22 @@ ou secreta protegida no servidor, o Guardião, a mesa ritual 3D e as 5 fases) es
   pelo caminho e marca `data-place` (`oficial`, `teste` ou `local`).
 - O número no canto: `vX.Y` no oficial (`v1.1`); `vX.Y · teste N` no teste, em que N é o
   `RELEASE` (`v1.1 · teste 5`).
+
+**Ícones** (desde o envio `teste 17`, a pedido de Weberson)
+- A logo é `icons/logo3D.jpg` (1024 × 1024, dada por Weberson): o d20 de osso com o olho verde, os
+  tentáculos e o anel de runas. `tools/icones.ps1` (PowerShell com um pedaço em C# e o
+  `System.Drawing` do Windows: este PC não tem o Pillow do Python) gera `icon-512.png` e `icon-192.png`
+  (a logo inteira), `apple-touch-icon.png` (180) e `icon-maskable-512.png` (o do Android, que recorta
+  em círculo e só garante um círculo de 80% da largura: a logo vai a 80%, esfumada em círculo, sobre a
+  cor média do fundo em volta do anel, que escurece para as pontas).
+- Os ícones ficaram pesados (o de 512 tem 591 KB): o `APP_FILES` do `sw.js` guarda só o de 192 (a aba
+  do navegador) e o do iPhone. O de 512 e o do Android só servem para instalar, com internet, e
+  iriam em toda atualização (os ícones eram três quartos da cópia guardada).
+- Os nomes dos arquivos não mudaram (manifestos, `index.html` e o `og:image` continuam iguais). Quem
+  já instalou: no Android, o Chrome troca o ícone sozinho, com o tempo (às vezes pergunta); no iPhone,
+  só tirando da tela de início e pondo de novo. A prévia dos links (o `og:image`, que aponta para o
+  ícone de 512 do endereço oficial) muda só depois de publicar, e os apps de conversa guardam a prévia
+  antiga por um tempo.
 
 **Mesa compartilhada: o servidor** (`server/`; o plano e o porquê em `docs/plano-mesa-compartilhada.md`)
 - Cloudflare Workers + Durable Objects (SQLite), plano gratuito. Cada sala é um Durable Object

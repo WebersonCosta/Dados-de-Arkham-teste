@@ -8,7 +8,7 @@
 // lugar de guardar: cada um usa nomes próprios e só apaga as suas próprias cópias antigas.
 const TEST = self.location.pathname.toLowerCase().startsWith('/dados-de-arkham-teste/');
 const PREFIX = TEST ? 'dados-de-arkham-teste-v' : 'dados-de-arkham-v';
-const RELEASE = 16;   // suba a cada envio (teste ou oficial): é o que avisa os aparelhos que há versão nova
+const RELEASE = 17;   // suba a cada envio (teste ou oficial): é o que avisa os aparelhos que há versão nova
 const CACHE = PREFIX + RELEASE;
 const APP_FILES = [
   './', 'index.html', TEST ? 'manifest-teste.webmanifest' : 'manifest.webmanifest',
@@ -20,7 +20,9 @@ const APP_FILES = [
   'src/themes/index.js',
   'src/themes/arkham/theme.js', 'src/themes/arkham/theme.css', 'src/themes/arkham/scene.js',
   'src/themes/arkham/dice-look.js', 'src/themes/arkham/audio.js', 'src/themes/arkham/rules.js',
-  'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
+  // os ícones pequenos (a aba do navegador e a tela de início do iPhone); o de 512 e o do Android só
+  // servem para instalar, com internet, e pesam demais para irem em toda atualização
+  'icons/icon-192.png', 'icons/apple-touch-icon.png'
 ];
 const LIBS = [
   'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js',

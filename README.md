@@ -310,7 +310,10 @@ O restante:
   futuro), para continuar o trabalho numa conversa nova sem perder nada.
 - `docs/guia-de-uso.md`: o guia de uso, com todas as funções e as limitações atuais do app.
 - `docs/plano-mesa-compartilhada.md`: o plano da mesa compartilhada, com as decisões e as fases.
-- `icons/`: os ícones do app (gerados por `tools/icone.html`).
+- `icons/`: os ícones do app, gerados da logo 3D (`icons/logo3D.jpg`, 1024 × 1024) por
+  `tools/icones.ps1` (no Windows, na pasta do projeto: `powershell -ExecutionPolicy Bypass -File
+  tools/icones.ps1`). O do Android (`icon-maskable-512.png`) leva a logo menor, para o anel de runas
+  caber no recorte redondo.
 - `src/main.js`: liga as peças (toque, escolha dos dados, fórmula, atalhos, resultado).
 - `src/room-panel.js`: o botão "Mesa" e o painel da mesa compartilhada (criar, entrar, quem está
   na mesa, convite, sair; gaveta no celular, ao lado no PC), quem vê cada rolagem (aberta, privada
