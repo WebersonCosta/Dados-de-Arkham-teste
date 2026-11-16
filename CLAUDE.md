@@ -28,7 +28,7 @@ para depois. Mantenha este arquivo em dia a cada etapa.
 | | Versão | Onde |
 | --- | --- | --- |
 | Oficial | **1.5**, publicada em 14/11/2026 | `main` = tag `v1.5` (225698b), https://webersoncosta.github.io/Dados-de-Arkham/; mesa oficial em https://mesa-arkham.mesa-arkham.workers.dev (a mesma da 1.4: o servidor não mudou) |
-| Desenvolvimento | **1.6**: a logo nova em 3D nos ícones do app, em teste com Weberson | `desenvolvimento`; endereço de teste com o envio `teste 17` |
+| Desenvolvimento | **1.6**: a logo nova em 3D nos ícones do app e na prévia dos links (o convite da mesa), em teste com Weberson | `desenvolvimento`; endereço de teste com o envio `teste 18` |
 
 Versões publicadas (tags): `v1.0` (3ac132c), `v1.1` (94cafb6), `v1.2` (d41a027), `v1.3` (fb4481a), `v1.4` (caf3124) e `v1.5` (225698b). A 1.1
 trouxe: vários dados juntos (fórmulas como 2d6 + 6), o 1d3, atalhos e fórmulas favoritas, os modos
@@ -40,13 +40,16 @@ Guardião (SAN e PV) e tirar um lugar da mesa. A 1.5 ajustou os alertas (o aviso
 histórico só apaga no "Apagar") e consertou a folha dos valores que fechava ao clicar num campo, no
 PC.
 
-- Próximo envio para o teste: subir o `RELEASE` do `sw.js` para 18.
+- Próximo envio para o teste: subir o `RELEASE` do `sw.js` para 19.
 - **Trabalho atual (15/11/2026): a logo nova.** Weberson pediu para trocar a logo desenhada (o d20
   de osso com o olho, os tentáculos e o círculo de sigilos, feita por `tools/icone.html`) por uma
   logo 3D do mesmo tema, que ele pôs em `icons/logo3D.jpg` (1024 × 1024). Os ícones agora saem dela
   por `tools/icones.ps1` (veja "Ícones"); o `tools/icone.html` saiu (o desenho antigo está no
-  histórico, na tag `v1.5`). No envio `teste 17`. Falta Weberson conferir e dar o "pode publicar"
-  (o servidor não mudou).
+  histórico, na tag `v1.5`). No envio `teste 17`. Weberson perguntou se a logo do convite da mesa
+  (a prévia do link no Discord) também tinha mudado: ainda não, porque a prévia usa o ícone do
+  endereço oficial. No envio `teste 18`, a prévia ganhou uma imagem própria, leve e com nome novo
+  (`icons/preview.jpg`), que aparece nos convites depois de publicar. Falta Weberson conferir e dar o
+  "pode publicar" (o servidor não mudou).
 - **Ajustes depois da 1.4 (versão 1.5, publicada em 14/11/2026; envio `teste 16`).** Weberson
   pediu: os alertas não precisam ficar para sempre; o aviso no alto some sozinho depois de alguns
   segundos se ninguém tocar em "Entendi"; no histórico, o alerta só sai por uma ação de propósito do
@@ -296,11 +299,16 @@ ou secreta protegida no servidor, o Guardião, a mesa ritual 3D e as 5 fases) es
 - Os ícones ficaram pesados (o de 512 tem 591 KB): o `APP_FILES` do `sw.js` guarda só o de 192 (a aba
   do navegador) e o do iPhone. O de 512 e o do Android só servem para instalar, com internet, e
   iriam em toda atualização (os ícones eram três quartos da cópia guardada).
-- Os nomes dos arquivos não mudaram (manifestos, `index.html` e o `og:image` continuam iguais). Quem
-  já instalou: no Android, o Chrome troca o ícone sozinho, com o tempo (às vezes pergunta); no iPhone,
-  só tirando da tela de início e pondo de novo. A prévia dos links (o `og:image`, que aponta para o
-  ícone de 512 do endereço oficial) muda só depois de publicar, e os apps de conversa guardam a prévia
-  antiga por um tempo.
+- Os nomes dos ícones não mudaram (os manifestos e o `index.html` continuam iguais). Quem já
+  instalou: no Android, o Chrome troca o ícone sozinho, com o tempo (às vezes pergunta); no iPhone,
+  só tirando da tela de início e pondo de novo.
+- A prévia dos links (o convite da mesa colado no Discord ou no WhatsApp) é o `og:image` do
+  `index.html`, que aponta para `icons/preview.jpg` do endereço oficial (precisa ser o endereço
+  inteiro, e os robôs das prévias não rodam o JavaScript que descobre se é teste ou oficial). É um
+  JPEG de 512 × 512 e 64 KB, gerado pelo mesmo `tools/icones.ps1`: o ícone de 512 em PNG, de 591 KB,
+  passaria do que o WhatsApp costuma aceitar (uns 300 KB), e o nome novo faz o Discord e o WhatsApp
+  buscarem a imagem de novo, em vez de mostrar a antiga guardada. Até publicar, o arquivo não existe
+  no endereço oficial: o convite do teste sai sem imagem, e o do oficial com a logo antiga.
 
 **Mesa compartilhada: o servidor** (`server/`; o plano e o porquê em `docs/plano-mesa-compartilhada.md`)
 - Cloudflare Workers + Durable Objects (SQLite), plano gratuito. Cada sala é um Durable Object

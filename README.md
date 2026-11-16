@@ -313,7 +313,8 @@ O restante:
 - `icons/`: os ícones do app, gerados da logo 3D (`icons/logo3D.jpg`, 1024 × 1024) por
   `tools/icones.ps1` (no Windows, na pasta do projeto: `powershell -ExecutionPolicy Bypass -File
   tools/icones.ps1`). O do Android (`icon-maskable-512.png`) leva a logo menor, para o anel de runas
-  caber no recorte redondo.
+  caber no recorte redondo, e `preview.jpg` é a imagem leve da prévia dos links (o convite da mesa
+  no Discord e no WhatsApp).
 - `src/main.js`: liga as peças (toque, escolha dos dados, fórmula, atalhos, resultado).
 - `src/room-panel.js`: o botão "Mesa" e o painel da mesa compartilhada (criar, entrar, quem está
   na mesa, convite, sair; gaveta no celular, ao lado no PC), quem vê cada rolagem (aberta, privada

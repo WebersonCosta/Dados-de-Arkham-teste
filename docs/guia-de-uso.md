@@ -4,7 +4,8 @@ Atualizado em 15/11/2026: versão oficial **1.5**, publicada em 14/11/2026. A 1.
 trouxe para a mesa compartilhada os alertas do Guardião e o "Tirar alguém" (veja "Mesa
 compartilhada"); a 1.5 faz os avisos dos alertas sumirem sozinhos, guarda os alertas no histórico até
 o Guardião apagar e conserta a folha dos valores no PC. O endereço de teste está com a **1.6** (envio
-"teste 17"), com a logo nova, em 3D, nos ícones do app (veja "Instalar na tela inicial").
+"teste 18"), com a logo nova, em 3D, nos ícones do app e na prévia dos links (veja "Instalar na
+tela inicial").
 
 O Dados de Arkham é um rolador de dados 3D para RPG, feito para *Call of Cthulhu* (7ª edição). Os
 dados caem numa mesa de madeira, à luz de velas, e o resultado é a face que ficou para cima, como
@@ -34,10 +35,10 @@ e até 6 jogadores podem rolar juntos, cada um no seu aparelho, pela **mesa comp
 | | Endereço | Versão | O que tem |
 | --- | --- | --- | --- |
 | **Oficial** | https://webersoncosta.github.io/Dados-de-Arkham/ | 1.5 | Tudo o que está neste guia |
-| **Teste** | https://webersoncosta.github.io/Dados-de-Arkham-teste/ | 1.6 (teste 17) | Tudo, mais a logo nova em 3D nos ícones |
+| **Teste** | https://webersoncosta.github.io/Dados-de-Arkham-teste/ | 1.6 (teste 18) | Tudo, mais a logo nova em 3D nos ícones |
 
 - O número da versão aparece pequeno no canto de baixo da tela, à direita: **v1.5** no oficial e
-  **v1.6 · teste 17** no teste, em vermelho. O número depois de "teste" sobe a cada envio: é o
+  **v1.6 · teste 18** no teste, em vermelho. O número depois de "teste" sobe a cada envio: é o
   jeito de saber se a versão nova já chegou.
 - Os dois endereços não se misturam. Cada um guarda à parte as preferências, as fórmulas favoritas
   e a cópia para usar sem internet. Instalado, o oficial se chama **Arkham** e o teste, **Arkham
@@ -72,6 +73,10 @@ verde, os tentáculos e o anel de runas. Quem já tinha o app instalado:
   antes). Para ver na hora, desinstale o app e instale de novo: nada guardado se perde;
 - **no iPhone**, o ícone da tela de início não muda sozinho: tire o app da tela de início e adicione
   de novo pelo Safari. Também nada guardado se perde.
+
+A imagem que aparece junto ao link do app e ao convite da mesa, no Discord e no WhatsApp, também
+passa a ser a logo nova, mas só depois que a versão 1.6 for publicada (ela vem do endereço oficial).
+Os apps de conversa podem mostrar a imagem antiga por algumas horas.
 
 ## 3. A tela
 
@@ -439,7 +444,7 @@ chave mesmo nunca sai do aparelho) e as rolagens. Tudo se apaga quando o Guardi�
 | 1.3 | 13/11/2026 | Dados menores, sem tremor, e empurrões mais raros e mais discretos |
 | 1.4 | 14/11/2026 | Na mesa compartilhada, os alertas do Guardião (SAN e PV) e tirar alguém da mesa |
 | 1.5 | 14/11/2026 | Os avisos dos alertas somem sozinhos e o histórico só apaga no "Apagar"; no PC, a folha dos valores não fecha mais ao clicar num campo |
-| 1.6 | em teste | A logo nova, em 3D, nos ícones do app |
+| 1.6 | em teste | A logo nova, em 3D, nos ícones do app e na prévia dos links (o convite da mesa) |
 
 ## 12. Limitações atuais
 

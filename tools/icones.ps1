@@ -5,7 +5,9 @@
 # - apple-touch-icon.png: 180 x 180, para a tela de início do iPhone;
 # - icon-maskable-512.png: para o Android, que recorta o ícone em círculo (ou outra forma) e só garante
 #   o miolo, um círculo de 80% da largura. Ali a logo vai a 80%, com a borda esfumada em círculo, sobre
-#   um fundo escuro da cor que já envolve o anel de runas: o anel cabe inteiro.
+#   um fundo escuro da cor que já envolve o anel de runas: o anel cabe inteiro;
+# - preview.jpg: a imagem da prévia dos links (o convite da mesa no Discord e no WhatsApp; o og:image do
+#   index.html). Em JPEG, leve: o WhatsApp costuma não mostrar imagens de prévia acima de uns 300 KB.
 
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
@@ -90,6 +92,13 @@ try {
     $out[$name].Dispose()
     "{0}: {1} KB" -f $name, [math]::Round((Get-Item (Join-Path $icons $name)).Length / 1KB)
   }
+  $jpeg = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
+  $quality = New-Object System.Drawing.Imaging.EncoderParameters(1)
+  $quality.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter([System.Drawing.Imaging.Encoder]::Quality, [long]85)
+  $preview = [Icones]::Resize($logo, 512)
+  $preview.Save((Join-Path $icons 'preview.jpg'), $jpeg, $quality)
+  $preview.Dispose()
+  "preview.jpg: {0} KB" -f [math]::Round((Get-Item (Join-Path $icons 'preview.jpg')).Length / 1KB)
 } finally {
   $logo.Dispose()
 }
